@@ -9,8 +9,10 @@ var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/yelp_camp");
 var campgroundSchema = new mongoose.Schema({
   name: String,
-  image: String
+  image: String,
+  description: String
 });
+
 var Campground = mongoose.model("Campground", campgroundSchema);
 
 // var campgrounds = [
@@ -18,9 +20,11 @@ var Campground = mongoose.model("Campground", campgroundSchema);
 //   {name: "Granite Hill", image: "https://farm8.staticflickr.com/7205/7121863467_eb0aa64193.jpg"},
 //   {name: "Mountain Goat's Rest", image: "https://farm8.staticflickr.com/7338/9627572189_12dbd88ebe.jpg"},
 // ];
+
 // Campground.create({
 //   name: "Granite Hill",
-//   image: "https://farm8.staticflickr.com/7205/7121863467_eb0aa64193.jpg"
+//   image: "https://farm8.staticflickr.com/7205/7121863467_eb0aa64193.jpg",
+//   description: "Nice place, if you like to look at granite!"
 //   }, function(err, campground){
 //     if(err){
 //       console.log("error: " + err);
@@ -41,7 +45,7 @@ app.get("/campgrounds", function(req, res){
     if(err){
       console.log("error: " + err);
     } else {
-      res.render("campgrounds", {campgrounds: campgrounds});
+      res.render("index", {campgrounds: campgrounds});
     }
   });
 
@@ -50,7 +54,8 @@ app.get("/campgrounds", function(req, res){
 app.post("/campgrounds", function(req, res){
   var name = req.body.name;
   var image = req.body.image;
-  Campground.create({name: name, image: image}, function(err, campground){
+  var desc = req.body.description;
+  Campground.create({name: name, image: image, description: desc}, function(err, campground){
     if(err){
       console.log("error: " + err);
     } else {
@@ -62,6 +67,17 @@ app.post("/campgrounds", function(req, res){
 app.get("/campgrounds/new", function(req, res){
   res.render("new");
 });
+
+app.get("/campgrounds/:id", function(req, res){
+  Campground.findById(req.params.id, function(err, campground){
+    if(err){
+      console.log("error: " + err);
+    } else {
+      res.render("show", {campground: campground});
+    }
+  });
+});
+
 app.listen(process.env.PORT, process.env.IP, function(){
   console.log("info: server is running");
 });
