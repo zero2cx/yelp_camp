@@ -35,7 +35,6 @@ function seedDB(){
           console.log("** error: " + err);
         } else {
           console.log("++ info: campground created");
-          console.log(campground);
           Comment.create({
             text: "What's up, Doc?",
             author: "Bugs Bunny"
@@ -46,7 +45,6 @@ function seedDB(){
               campground.comments.push(comment);
               campground.save();
               console.log("++ info: comment created");
-              console.log(comment);
             }
           });
         }
