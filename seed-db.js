@@ -6,17 +6,17 @@ var campgroundData = [
   {
     name: "Woodsy Place",
     image: "https://farm8.staticflickr.com/7252/7626464792_3e68c2a6a5.jpg",
-    description: "In the woods, for sure."
+    description: "Corporis eaque eaque voluptatem velit corporis nihil. Ut magnam nihil et porro. Amet nihil quis ipsa omnis recusandae aut est tempore. Sit unde exercitationem quod labore aperiam tenetur. Magnam magnam voluptatum modi voluptatibus laudantium. Nulla corrupti in aut libero animi sint accusamus ipsa. Enim saepe sequi omnis ea. Ea est quia a maxime fuga quia tempore id. Velit quod rerum magni. Occaecati distinctio nesciunt numquam. Autem et dicta."
   },
   {
     name: "Beach Camp",
     image: "https://farm4.staticflickr.com/3872/14435096036_39db8f04bc.jpg",
-    description: "On the beach, for sure."
+    description: "Voluptates nesciunt dignissimos velit ratione quae. Sunt vel quasi nostrum sunt consequuntur illum adipisci est. Ratione sit ab ducimus repellendus nihil. Et sed provident molestiae. Minus dolore aliquid est voluptas sequi."
   },
   {
     name: "Picnic Place",
     image: "https://farm9.staticflickr.com/8456/8006869967_de2ed3e564.jpg",
-    description: "We have picnic tables."
+    description: "Quis blanditiis maiores quis illum provident at. Rerum explicabo minus asperiores vel eum cupiditate. Maiores impedit tempore nobis aperiam nesciunt molestiae qui maiores. Ut officiis facere optio omnis. Omnis ut."
   }
 ]
 

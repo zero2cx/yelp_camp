@@ -13,6 +13,7 @@ mongoose.connect("mongodb://localhost/yelp_camp");
 mongoose.Promise = global.Promise;
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"));
 seedDB();
 
 // route: SERVER_ROOT
