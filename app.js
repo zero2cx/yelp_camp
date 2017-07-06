@@ -64,6 +64,7 @@ app.get("/campgrounds/new", function(req, res) {
   res.render("campgrounds/new");
 });
 
+
 // CAMPGROUNDS
 // route: CREATE
 app.post("/campgrounds", function(req, res) {
@@ -84,6 +85,7 @@ app.post("/campgrounds", function(req, res) {
   });
 });
 
+
 // CAMPGROUNDS
 // route: SHOW
 app.get("/campgrounds/:id", function(req, res) {
@@ -99,10 +101,11 @@ app.get("/campgrounds/:id", function(req, res) {
   });
 });
 
+
 // COMMENTS
 // route: NEW
-app.get("/campgrounds/:id/comments/new", function(req, res) {
-  Campground.findById(req.params.id, isLoggedIn, function(err, campground) {
+app.get("/campgrounds/:id/comments/new", isLoggedIn, function(req, res) {
+  Campground.findById(req.params.id, function(err, campground) {
     if (err) {
       console.log("** error: " + err);
     }
@@ -136,13 +139,12 @@ app.post("/campgrounds/:id/comments", isLoggedIn, function(req, res) {
   });
 });
 
-/////////////////////////
-// show register form
+
 app.get("/register", function(req, res) {
   res.render("register");
 });
 
-//handle sign up logic
+
 app.post("/register", function(req, res) {
   var newUser = new User({
     username: req.body.username
