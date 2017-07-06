@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
-seedDatabase();
+// seedDatabase();
 
 app.use(require("express-session")({
   secret: "Smell The Glove by Spinal Tap",
@@ -40,7 +40,6 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
-  console.log("*** " + req.user);
   next();
 });
 
