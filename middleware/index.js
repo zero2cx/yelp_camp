@@ -9,6 +9,7 @@ middlewareObj.isLoggedIn = function(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
+  req.flash("error", "Please log in to YelpCamp")
   res.redirect("/user/login");
 }
 
@@ -18,6 +19,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
   if (req.isAuthenticated()) {
     Campground.findById(req.params.id, function(err, campground) {
       if (err) {
+        req.flash("error", "Campground not found");
         console.log("** error: " + err);
         res.redirect("back");
       }
@@ -26,13 +28,15 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
           next();
         }
         else {
-          console.log("** error: permissions insufficient to edit or delete this campground");
+          req.flash("error", "Insufficient Permissions: Not Authorized to Continue");
+          console.log("** error: Insufficient Permissions: Not Authorized to Continue");
           res.redirect("back");
         }
       }
     });
   }
   else {
+    req.flash("error", "Please log in to edit a campground");
     console.log("** error: please log in to edit a campground");
     res.reirect("back");
   }
