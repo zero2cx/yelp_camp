@@ -4,12 +4,12 @@ var router = express.Router({
 });
 var Campground = require("../models/campground");
 var Comment = require("../models/comment");
+var Middleware = require("../middleware");
 
 
 // ROUTE: NEW COMMENT
 // display the new-comment form
-
-router.get("/new", isLoggedIn, function(req, res) {
+router.get("/new", Middleware.isLoggedIn, function(req, res) {
   Campground.findById(req.params.id, function(err, campground) {
     if (err) {
       console.log("** error: " + err);
@@ -24,7 +24,7 @@ router.get("/new", isLoggedIn, function(req, res) {
 
 // ROUTE: CREATE COMMENT
 // add the new-comment to the database
-router.post("/", isLoggedIn, function(req, res) {
+router.post("/", Middleware.isLoggedIn, function(req, res) {
   Campground.findById(req.params.id, function(err, campground) {
     if (err) {
       console.log("** error: " + err);
@@ -51,7 +51,7 @@ router.post("/", isLoggedIn, function(req, res) {
 
 // ROUTE: EDIT COMMENT
 // display the edit-comment form
-router.get("/:comment_id/edit", checkCommentOwnership, function(req, res) {
+router.get("/:comment_id/edit", Middleware.checkCommentOwnership, function(req, res) {
   Comment.findById(req.params.comment_id, function(err, comment) {
     if (err) {
       console.log("error: " + err)
@@ -69,7 +69,7 @@ router.get("/:comment_id/edit", checkCommentOwnership, function(req, res) {
 
 // ROUTE: UPDATE COMMENT
 // update the comment in the database
-router.put("/:comment_id", checkCommentOwnership, function(req, res) {
+router.put("/:comment_id", Middleware.checkCommentOwnership, function(req, res) {
   Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, comment) {
     if (err) {
       console.log("error while updating comment");
@@ -84,7 +84,7 @@ router.put("/:comment_id", checkCommentOwnership, function(req, res) {
 
 // ROUTE: DELETE COMMENT
 // delets a comment from the database
-router.delete("/:comment_id", checkCommentOwnership, function(req, res) {
+router.delete("/:comment_id", Middleware.checkCommentOwnership, function(req, res) {
   Comment.findByIdAndRemove(req.params.comment_id, function(err) {
     if (err) {
       console.log("error while deleting comment");
@@ -95,44 +95,6 @@ router.delete("/:comment_id", checkCommentOwnership, function(req, res) {
     }
   });
 });
-
-
-
-// MIDDLEWARE
-// ensure that the user is logged in, if yes then continue, +
-// + if not then redirect to the login page
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/user/login");
-}
-
-
-// check if the logged-in user is the owner of the comment
-function checkCommentOwnership(req, res, next) {
-  if (req.isAuthenticated()) {
-    Comment.findById(req.params.comment_id, function(err, comment) {
-      if (err) {
-        console.log("** error: " + err);
-        res.redirect("back");
-      }
-      else {
-        if (comment.author.id.equals(req.user._id)) {
-          next();
-        }
-        else {
-          console.log("** error: permissions insufficient to edit or delete this campground");
-          res.redirect("back");
-        }
-      }
-    });
-  }
-  else {
-    console.log("** error: please log in to edit a campground");
-    res.redirect("back");
-  }
-}
 
 
 module.exports = router;
