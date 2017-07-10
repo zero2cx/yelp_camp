@@ -13,15 +13,14 @@ var Campground = require("./models/campground");
 var Comment = require("./models/comment");
 var User = require("./models/user");
 var seedDatabase = require("./seed-db");
-
 var indexRoutes = require("./routes/index");
 var campgroundRoutes = require("./routes/campgrounds");
 var commentRoutes = require("./routes/comments");
 var userRoutes = require("./routes/user");
+var databaseUrl = process.env.DATABASE_URL || "mongodb://localhost/yelp_camp";
 
 mongoose.Promise = global.Promise;
-// mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect("mongodb://zero:OW#Oe)k6@ds153352.mlab.com:53352/zero2cx_yelpcamp");
+mongoose.connect(databaseUrl);
 // seedDatabase();
 app.use(bodyParser.urlencoded({
   extended: true
