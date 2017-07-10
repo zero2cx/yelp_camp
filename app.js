@@ -20,7 +20,8 @@ var commentRoutes = require("./routes/comments");
 var userRoutes = require("./routes/user");
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/yelp_camp");
+// mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://zero:OW#Oe)k6@ds153352.mlab.com:53352/zero2cx_yelpcamp");
 // seedDatabase();
 app.use(bodyParser.urlencoded({
   extended: true
