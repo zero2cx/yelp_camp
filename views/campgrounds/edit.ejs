@@ -1,31 +1,118 @@
 <% include ../partials/header %>
 
-    <div class="container">
+    <div id="form-container" class="container">
+
       <div class="row">
-        <h1 style="text-align: center;">Edit Campground: <%= campground.name %></h1>
-        <div style="width: 30%; margin: 20px auto;">
-          <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
-            <div class="form-group">
-              <input class="form-control" type="text" name="campground[name]" value="<%= campground.name %>">
-            </div>
-            <div class="form-group">
-              <input class="form-control" type="number" name="campground[price]" value="<%= campground.price %>" min="0.01" step="0.01">
-            </div>
-            <div class="form-group">
-              <input class="form-control" type="text" name="campground[image]" value="<%= campground.image %>">
-            </div>
-            <div class="form-group">
-              <input class="form-control" type="text" name="campground[description]" value="<%= campground.description %>">
-            </div>
-            <div class="form-group">
-              <button class="btn btn-lg btn-primary btn-default btn-block">submit</button>
-            </div>
-          </form>
-          <a href="/campgrounds">cancel</a>
+
+        <div class="col-sm-12 no-gutter">
+          <h2 class="text-center">Edit Campground</h2>
         </div>
+
       </div>
-    </div>
+
+<form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
+
+      <div class="row">
+
+        <div class="col-xs-7 no-pad-left">
+
+          <div class="form-group">
+            <input type="text" class="form-control" name="campground[name]" placeholder="name" value="<%= campground.name %>">
+          </div>
+
+          <div class="form-group">
+          <div class="input-group">
+            <input type="number" class="form-control" name="campground[price]" placeholder="price" value="<%= campground.price %>">
+
+            <div class="input-group-btn">
+              <button type="button" id="btnRatePeriod" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                /night
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="javascript:perNight()">/night</a></li>
+                <li><a href="javascript:perWeek()">/week</a></li>
+              </ul>
+            </div><!-- btn-group -->
+
+          </div><!-- input-group -->
+</div>
+        </div><!-- col -->
+
+        <div class="col-xs-5 no-pad-right">
+
+          <div class="form-group">
+            <img id="form-image" class="form-control form-thumbnail" src="https://farm3.staticflickr.com/2311/2123340163_af7cba3be7.jpg">
+          </div>
+
+        </div><!-- col -->
+
+      </div><!-- row -->
+
+      <div class="row">
+
+        <div class="col-xs-12 no-pad-left no-pad-right">
+
+            <div class="form-group">
+              <textarea class="form-control" placeholder="description" name="campground[description]"> <%= campground.description %></textarea>
+            </div>
+
+        </div><!-- col -->
+
+      </div><!-- row -->
+
+      <div class="row">
+
+        <div class="col-xs-12">
+
+          <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-default btn-block">submit</button>
+          </div>
+
+        </div><!-- col -->
+
+      </div><!-- row -->
+
+</form>
+
+<div id="image-picker">
+  <span id="picker-close">Close</span>
+  <img id="picker-image">
+  <div id="picker-text"></div>
+</div>
+
+    </div><!-- container -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+      var btnRatePeriod = $("#btnRatePeriod");
+
+var imagePicker = document.getElementById('image-picker');
+var formImage = document.getElementById('form-image');
+var pickerImage = document.getElementById("picker-image");
+var pickerText = document.getElementById("picker-text");
+var pickerClose = document.getElementById("picker-close");
+
+formImage.onclick = function(){
+    imagePicker.style.display = "inline";
+    pickerImage.src = this.src;
+    pickerText.innerHTML = this.alt;
+}
+
+pickerClose.onclick = function() {
+    imagePicker.style.display = "none";
+}
+
+
+      function perNight() {
+        btnRatePeriod.html('/night <span class="caret"></span>');
+      }
+
+      function perWeek() {
+        btnRatePeriod.html('/week <span class="caret"></span>');
+      }
+    </script>
 
 <% include ../partials/footer %>
-
-
