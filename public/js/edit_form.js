@@ -6,6 +6,7 @@ var thumbNoPic = $('#thumb-no-pic');
 thumbNoPic.hide();
 
 var submitImage = $('#submit-image');
+var submitRentalPeriod = $('#submit-rental-period');
 
 var popupPic = $('#popup-pic');
 var popupNoPic = $('#popup-no-pic');
@@ -105,8 +106,10 @@ popupCancel.on('click', function() { //console.log('++ POPUP CANCEL CLICKED');
 // UPDATE: update when a DROPDOWN has been selected
 function perNight() {
   $('#rental-period').html('nightly <span class="caret"></span>');
+  submitRentalPeriod.val('night');
 }
 
 function perWeek() {
   $('#rental-period').html('weekly <span class="caret"></span>');
+  submitRentalPeriod.val('week');
 }

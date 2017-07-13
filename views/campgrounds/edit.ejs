@@ -46,7 +46,7 @@
             <input type="number" class="form-control" name="campground[price]" placeholder="price" min="0.01" step="0.01" onInput="javascript:this.value=parseFloat(this.value).toFixed(2)" value="<%= campground.price %>">
             <div class="input-group-btn">
               <button type="button" id="price-period" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-<% if (campground.rental_length == 'night') { %>
+<% if (campground.rental_period == 'night') { %>
                 nightly
 <% } else { %>
                 weekly
@@ -59,7 +59,7 @@
               </ul>
             </div><!-- btn-group -->
           </div><!-- input-group -->
-          <input id="submit-rental-length" type="hidden" name="campground[rental_length]" value="<%= campground.rental_length %>"></input>
+          <input id="submit-rental-period" type="hidden" name="campground[rental_period]" value="<%= campground.rental_period %>"></input>
         </div><!-- form-group -->
       </div><!-- col -->
 <!------------------------------------>
