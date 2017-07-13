@@ -45,8 +45,12 @@
           <div class="input-group">
             <input type="number" class="form-control" name="campground[price]" placeholder="price" min="0.01" step="0.01" onInput="javascript:this.value=parseFloat(this.value).toFixed(2)" value="<%= campground.price %>">
             <div class="input-group-btn">
-              <button type="button" id="rental-period" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" id="price-period" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<% if (campground.rental_length == 'night') { %>
                 nightly
+<% } else { %>
+                weekly
+<% } %>
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu dropdown-menu-right">
@@ -55,6 +59,7 @@
               </ul>
             </div><!-- btn-group -->
           </div><!-- input-group -->
+          <input id="submit-rental-length" type="hidden" name="campground[rental_length]" value="<%= campground.rental_length %>"></input>
         </div><!-- form-group -->
       </div><!-- col -->
 <!------------------------------------>
@@ -63,7 +68,8 @@
       <div class="col-xs-5 no-pad-right">
         <div class="form-group">
             <i id="thumb-no-pic" class="fa fa-picture-o form-control form-thumbnail" aria-hidden="true"></i>
-            <img id="thumb-pic" class="form-control form-thumbnail" src="https://farm3.staticflickr.com/2311/2123340163_af7cba3be7.jpg" alt="https://farm3.staticflickr.com/2311/2123340163_af7cba3be7.jpg">
+            <img id="thumb-pic" class="form-control form-thumbnail" src="<%= campground.image %>" alt="<%= campground.image %>">
+            <input id="submit-image" type="hidden" name="campground[image]" value="<%= campground.image %>"></input>
         </div><!-- form-group -->
       </div><!-- col -->
     </div><!-- row -->

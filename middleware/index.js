@@ -38,7 +38,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
   else {
     req.flash("error", "Please log in to edit a campground");
     console.log("** error: please log in to edit a campground");
-    res.reirect("back");
+    res.redirect("back");
   }
 }
 

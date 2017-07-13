@@ -1,13 +1,18 @@
 var popupDialog = $('#popup-dialog');
 popupDialog.hide();
 
+var thumbPic = $('#thumb-pic');
+var thumbNoPic = $('#thumb-no-pic');
+thumbNoPic.hide();
+
+var submitImage = $('#submit-image');
+
 var popupPic = $('#popup-pic');
 var popupNoPic = $('#popup-no-pic');
 var popupUrl = $('#popup-url');
 var popupDone = $('#popup-done');
 var popupCancel = $('#popup-cancel');
-var thumbPic = $('#thumb-pic');
-var thumbNoPic = $('#thumb-no-pic');
+
 var currentThumb;
 
 // popupPic.data('sibling', popupNoPic);
@@ -84,6 +89,7 @@ popupDone.on('click', function() { //console.log('++ POPUP DONE CLICKED');
     });
     thumbPic.show() && thumbNoPic.hide();
   }
+  submitImage.val(thumbPic.attr('src'));
   popupDialog.hide();
 });
 
