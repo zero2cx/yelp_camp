@@ -1,16 +1,3 @@
-.thumbnail {
-  padding: 0;
-}
-.thumbnail img {
-  width: 100%;
-}
-.thumbnail .caption-full {
-  padding: 9px;
-}
-.delete-form {
-  display: inline;
-}
-
 /*******************/
 /* DEBUG ONLY ******/
 /*******************/
@@ -29,7 +16,8 @@
 .sm-pad-right {
   padding-right: 4px;
 }
-.form-container {
+.container,
+#popup-dialog {
   min-width: 340px;
   max-width: 340px;
   width: 100%;
@@ -63,12 +51,10 @@
 /*******************/
 #popup-dialog {
   position: fixed;
-  /*min-width: 340px;*/
-  /*max-width: 340px;*/
   width: 100%;
   min-height: 300px;
   max-height: 550px;
-  top: 10%;
+  top: 4%;
   z-index: 1;
   text-align: center;
   border-radius: 10px;
