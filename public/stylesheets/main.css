@@ -10,3 +10,7 @@
 .delete-form {
   display: inline;
 }
+.jumbotron {
+  color: #00a0a0;
+  background-color: #004020;
+}
