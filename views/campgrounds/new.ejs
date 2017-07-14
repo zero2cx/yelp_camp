@@ -15,12 +15,14 @@
   </div><!-- row -->
 
   <div class="row">
-    <div class="no-gutter">
-      <h2 class="text-center">New Campground</h2>
-    </div><!-- no-gutter -->
+    <!--<div class="no-gutter">-->
+      <div id="form-title">
+        new campground
+      </div>
+    <!--</div><!-- no-gutter -->
   </div><!-- row -->
 
-  <form action="/campgrounds" method="POST">
+  <form name="new_campground" action="/campgrounds" method="POST">
 
     <div class="row">
       <div class="col-xs-7 no-pad-left no-pad-right">
@@ -33,7 +35,7 @@
           <div class="input-group">
             <input type="number" class="form-control" name="campground[price]" placeholder="price" min="0.01" step="0.01" onInput="javascript:this.value=parseFloat(this.value).toFixed(2)">
             <div class="input-group-btn">
-              <button type="button" id="price-period" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" id="rental-period" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 nightly
                 <span class="caret"></span>
               </button>
@@ -63,10 +65,12 @@
     <div class="row">
       <div class="form-group text-center">
         <div class="col-xs-6">
-          <a class="btn btn-lg btn-default form-button">cancel</a>
+          <a id="form-cancel" href="/campgrounds">cancel</span>
+          <!--<a class="btn btn-lg btn-default form-button">cancel</a>-->
         </div><!-- col  -->
         <div class="col-xs-6">
-          <button class="btn btn-lg btn-success form-button">done</button>
+          <a id="form-done" href="javascript:document.new_campground.submit()">done</span>
+          <!--<button class="btn btn-lg btn-success form-button">done</button>-->
         </div><!-- col  -->
       </div><!-- form-group -->
     </div><!-- row -->

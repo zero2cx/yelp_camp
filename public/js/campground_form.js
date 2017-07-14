@@ -1,11 +1,10 @@
-var popupDialog = $('#popup-dialog');
-
 var thumbPic = $('#thumb-pic');
 var thumbNoPic = $('#thumb-no-pic');
-
+var rentalPeriod = $('#rental-period');
 var submitImage = $('#submit-image');
 var submitRentalPeriod = $('#submit-rental-period');
 
+var popupDialog = $('#popup-dialog');
 var popupPic = $('#popup-pic');
 var popupNoPic = $('#popup-no-pic');
 var popupUrl = $('#popup-url');
@@ -16,11 +15,11 @@ var currentThumb;
 
 if (thumbPic.attr('src') == '') {
   thumbNoPic.show();
-  // thumbNoPic.attr('display', 'block');
 }
 else {
   thumbPic.show();
 }
+
 // popupPic.data('sibling', popupNoPic);
 // popupNoPic.data('sibling', popupPic);
 // thumbPic.data('sibling', thumbNoPic);
@@ -32,8 +31,6 @@ else {
 // var thumbFromServer = true; if (thumbFromServer) {
 //   thumbPic.attr({src: 'https://farm4.staticflickr.com/3232/2678020846_5acd913ba6.jpg', alt: 'https://farm4.staticflickr.com/3232/2678020846_5acd913ba6.jpg'}).show() && thumbNoPic.hide(); } else { thumbPic.attr({src: '', alt: ''}).hide() && thumbNoPic.show(); }
 // /////////////////////////////////////////////////////////////////
-
-// currentThumb = thumbPic.attr('alt');
 
 // CLICK: handle a click on the THUMBNAIL PIC
 thumbPic.on('click', function() { //console.log('++ IMAGE THUMBNAIL CLICKED');
@@ -110,11 +107,11 @@ popupCancel.on('click', function() { //console.log('++ POPUP CANCEL CLICKED');
 
 // UPDATE: update when a DROPDOWN has been selected
 function perNight() {
-  $('#rental-period').html('nightly <span class="caret"></span>');
+  rentalPeriod.html('nightly <span class="caret"></span>');
   submitRentalPeriod.val('night');
 }
 
 function perWeek() {
-  $('#rental-period').html('weekly <span class="caret"></span>');
+  rentalPeriod.html('weekly <span class="caret"></span>');
   submitRentalPeriod.val('week');
 }
