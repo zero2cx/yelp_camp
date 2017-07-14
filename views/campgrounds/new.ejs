@@ -15,9 +15,9 @@
   </div><!-- row -->
 
   <div class="row">
-    <div class="col-sm-12 no-gutter">
+    <div class="no-gutter">
       <h2 class="text-center">New Campground</h2>
-    </div><!-- col -->
+    </div><!-- no-gutter -->
   </div><!-- row -->
 
   <form action="/campgrounds" method="POST">
@@ -55,26 +55,26 @@
     </div><!-- row -->
 
     <div class="row">
-      <div class="col-xs-12 no-pad-left no-pad-right">
-        <div class="form-group">
-          <textarea class="form-control" placeholder="description" name="campground[description]"></textarea>
-        </div><!-- form-group -->
-      </div><!-- col -->
+      <div class="form-group no-pad-left no-pad-right">
+        <textarea class="form-control" placeholder="description" name="campground[description]"></textarea>
+      </div><!-- form-group -->
     </div><!-- row -->
 
     <div class="row">
-      <div class="col-xs-12">
-        <div class="form-group">
-          <button class="btn btn-lg btn-primary btn-default btn-block">submit</button>
-        </div><!-- form-group -->
-      </div><!-- col -->
+      <div class="form-group text-center">
+        <div class="col-xs-6">
+          <a class="btn btn-lg btn-default form-button">cancel</a>
+        </div><!-- col  -->
+        <div class="col-xs-6">
+          <button class="btn btn-lg btn-success form-button">done</button>
+        </div><!-- col  -->
+      </div><!-- form-group -->
     </div><!-- row -->
 
     <input id="submit-rental-period" type="hidden" name="campground[rental_period]" value="night"></input>
     <input id="submit-image" type="hidden" name="campground[image]" value=""></input>
-  </form>
 
-  <a href="/campgrounds">cancel</a>
+  </form>
 
 </div><!-- container -->
 
