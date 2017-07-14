@@ -32,10 +32,11 @@ router.get("/new", Middleware.isLoggedIn, function(req, res) {
 // ROUTE: CREATE CAMPGROUND
 // add the new-campground to the database
 router.post("/", Middleware.isLoggedIn, function(req, res) {
-  var name = req.body.name;
-  var price = req.body.price;
-  var image = req.body.image;
-  var desc = req.body.description;
+  var name = req.body.campground.name;
+  var price = req.body.campground.price;
+  var rental_period = req.body.campground.rental_period;
+  var image = req.body.campground.image;
+  var desc = req.body.campground.description;
   var author = {
     id: req.user._id,
     username: req.user.username
@@ -43,6 +44,7 @@ router.post("/", Middleware.isLoggedIn, function(req, res) {
   Campground.create({
     name: name,
     price: price,
+    rental_period: rental_period,
     image: image,
     description: desc,
     author: author
