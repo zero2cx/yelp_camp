@@ -1,12 +1,7 @@
 <% include ../partials/header %>
 
-<!------------------------------------>
-<!-- TOP OF CONTAINER ---------------->
-<!------------------------------------>
 <div class="container form-container">
-<!------------------------------------>
-<!-- IMAGE PICKER POPUP -------------->
-<!------------------------------------>
+
   <div class="row">
     <div id="popup-dialog" class="form-container">
       <span id="popup-cancel">cancel</span>
@@ -18,34 +13,29 @@
       </div><!-- form-group -->
     </div><!-- image-picker -->
   </div><!-- row -->
-<!------------------------------------>
-<!-- PAGE TITLE ---------------------->
-<!------------------------------------>
+
   <div class="row">
-    <div class="col-sm-12 no-gutter">
-      <h2 class="text-center">Edit Campground</h2>
-    </div><!-- col -->
+
+      <div id="form-title">
+        edit campground
+      </div>
+
   </div><!-- row -->
-<!------------------------------------>
-<!-- TOP OF FORM --------------------->
-<!------------------------------------>
-  <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
-<!------------------------------------>
-<!-- CAMPGROUND NAME ----------------->
-<!------------------------------------>
+
+  <form name="edit_campground" action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
+
     <div class="row">
       <div class="col-xs-7 no-pad-left no-pad-right">
+
         <div class="form-group">
           <input type="text" class="form-control" name="campground[name]" placeholder="name" value="<%= campground.name %>">
         </div><!-- form-group -->
-<!------------------------------------>
-<!-- CAMPGROUND PRICE ---------------->
-<!------------------------------------>
+
         <div class="form-group">
           <div class="input-group">
             <input type="number" class="form-control" name="campground[price]" placeholder="price" min="0.01" step="0.01" onInput="javascript:this.value=parseFloat(this.value).toFixed(2)" value="<%= campground.price %>">
             <div class="input-group-btn">
-              <button type="button" id="price-period" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" id="rental-period" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 <% if (campground.rental_period == 'night') { %>
                 nightly
 <% } else { %>
@@ -59,51 +49,43 @@
               </ul>
             </div><!-- btn-group -->
           </div><!-- input-group -->
-          <input id="submit-rental-period" type="hidden" name="campground[rental_period]" value="<%= campground.rental_period %>"></input>
         </div><!-- form-group -->
       </div><!-- col -->
-<!------------------------------------>
-<!-- CAMPGROUND IMAGE ---------------->
-<!------------------------------------>
+
       <div class="col-xs-5 no-pad-right">
         <div class="form-group">
             <i id="thumb-no-pic" class="fa fa-picture-o form-control form-thumbnail" aria-hidden="true"></i>
             <img id="thumb-pic" class="form-control form-thumbnail" src="<%= campground.image %>" alt="<%= campground.image %>">
-            <input id="submit-image" type="hidden" name="campground[image]" value="<%= campground.image %>"></input>
         </div><!-- form-group -->
       </div><!-- col -->
     </div><!-- row -->
-<!------------------------------------>
-<!-- CAMPGROUND DESCRIPTION ---------->
-<!------------------------------------>
+
     <div class="row">
       <div class="col-xs-12 no-pad-left no-pad-right">
-        <div class="form-group">
-          <textarea class="form-control" placeholder="description" name="campground[description]"><%= campground.description %></textarea>
-        </div><!-- form-group -->
+      <textarea class="form-control" placeholder="description" name="campground[description]"><%= campground.description %></textarea>
       </div><!-- col -->
     </div><!-- row -->
-<!------------------------------------>
-<!-- SUBMIT BUTTON ------------------->
-<!------------------------------------>
+
     <div class="row">
-      <div class="col-xs-12">
-        <div class="form-group">
-          <button class="btn btn-lg btn-primary btn-default btn-block">submit</button>
-        </div><!-- form-group -->
-      </div><!-- col -->
+      <div class="form-group text-center">
+        <div class="col-xs-6">
+          <a id="form-cancel" href="/campgrounds">cancel</span>
+        </div><!-- col  -->
+        <div class="col-xs-6">
+          <a id="form-done" href="javascript:document.edit_campground.submit()">done</span>
+        </div><!-- col  -->
+      </div><!-- form-group -->
     </div><!-- row -->
-<!------------------------------------>
-<!-- BOTTOM OF FORM ------------------>
-<!------------------------------------>
+
+    <input id="submit-rental-period" type="hidden" name="campground[rental_period]" value="<%= campground.rental_period %>"></input>
+    <input id="submit-image" type="hidden" name="campground[image]" value="<%= campground.image %>"></input>
+
   </form>
-<!------------------------------------>
-<!-- BOTTOM OF CONTAINER ------------->
-<!------------------------------------>
+
 </div><!-- container -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/edit_form.js"></script>
+<script src="/js/campground_form.js"></script>
 
 <% include ../partials/footer %>
