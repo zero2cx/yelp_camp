@@ -1,8 +1,8 @@
 var thumbPic = $('#thumb-pic');
 var thumbNoPic = $('#thumb-no-pic');
-var rentalPeriod = $('#rental-period');
-var submitImage = $('#submit-image');
-var submitRentalPeriod = $('#submit-rental-period');
+var rentCycle = $('#rent-cycle');
+var submitPic = $('#submit-pic');
+var submitRentCycle = $('#submit-rent-cycle');
 
 var popupDialog = $('#popup-dialog');
 var popupPic = $('#popup-pic');
@@ -14,23 +14,11 @@ var popupCancel = $('#popup-cancel');
 var currentThumb;
 
 if (thumbPic.attr('src') == '') {
-  thumbNoPic.show();
+  thumbNoPic.css('display', 'block');
 }
 else {
-  thumbPic.show();
+  thumbPic.css('display', 'block');
 }
-
-// popupPic.data('sibling', popupNoPic);
-// popupNoPic.data('sibling', popupPic);
-// thumbPic.data('sibling', thumbNoPic);
-// thumbNoPic.data('sibling', thumbPic);
-
-/////////////////////////////////////////////////////////////////
-// DEBUG USE ONLY ///////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
-// var thumbFromServer = true; if (thumbFromServer) {
-//   thumbPic.attr({src: 'https://farm4.staticflickr.com/3232/2678020846_5acd913ba6.jpg', alt: 'https://farm4.staticflickr.com/3232/2678020846_5acd913ba6.jpg'}).show() && thumbNoPic.hide(); } else { thumbPic.attr({src: '', alt: ''}).hide() && thumbNoPic.show(); }
-// /////////////////////////////////////////////////////////////////
 
 // CLICK: handle a click on the THUMBNAIL PIC
 thumbPic.on('click', function() { //console.log('++ IMAGE THUMBNAIL CLICKED');
@@ -92,7 +80,7 @@ popupDone.on('click', function() { //console.log('++ POPUP DONE CLICKED');
     });
     thumbPic.show() && thumbNoPic.hide();
   }
-  submitImage.val(thumbPic.attr('src'));
+  submitPic.val(thumbPic.attr('src'));
   popupDialog.hide();
 });
 
@@ -107,11 +95,11 @@ popupCancel.on('click', function() { //console.log('++ POPUP CANCEL CLICKED');
 
 // UPDATE: update when a DROPDOWN has been selected
 function perNight() {
-  rentalPeriod.html('nightly <span class="caret"></span>');
-  submitRentalPeriod.val('night');
+  rentCycle.html('nightly <span class="caret"></span>');
+  submitRentCycle.val('night');
 }
 
 function perWeek() {
-  rentalPeriod.html('weekly <span class="caret"></span>');
-  submitRentalPeriod.val('week');
+  rentCycle.html('weekly <span class="caret"></span>');
+  submitRentCycle.val('week');
 }

@@ -1,9 +1,8 @@
 <% include ../partials/header %>
 
 <div class="container form-container">
-
   <div class="row">
-    <div id="popup-dialog" class="form-container">
+    <div id="popup-dialog">
       <span id="popup-cancel">cancel</span>
       <span id="popup-done">done</span>
         <i id="popup-no-pic" class="fa fa-picture-o" aria-hidden="true"></i>
@@ -11,31 +10,30 @@
       <div class="form-group">
         <input id="popup-url" class="form-control" type="text" onClick="javascript:this.select()" placeholder="image url" value="">
       </div><!-- form-group -->
-    </div><!-- image-picker -->
+    </div><!-- popup-dialog -->
   </div><!-- row -->
+</div><!-- form-container -->
 
+<div class="container form-container">
   <div class="row">
-    <!--<div class="no-gutter">-->
-      <div id="form-title">
-        new campground
-      </div>
-    <!--</div><!-- no-gutter -->
+    <div id="form-title">
+      new campground
+    </div><!-- form-title -->
   </div><!-- row -->
 
   <form name="new_campground" action="/campgrounds" method="POST">
 
     <div class="row">
       <div class="col-xs-7 no-pad-left no-pad-right">
-
         <div class="form-group">
-          <input type="text" class="form-control" name="campground[name]" placeholder="name">
+          <input type="text" class="form-control" name="campground[name]" placeholder="campground name">
         </div><!-- form-group -->
 
         <div class="form-group">
           <div class="input-group">
             <input type="number" class="form-control" name="campground[price]" placeholder="price" min="0.01" step="0.01" onInput="javascript:this.value=parseFloat(this.value).toFixed(2)">
             <div class="input-group-btn">
-              <button type="button" id="rental-period" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" id="rent-cycle" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 nightly
                 <span class="caret"></span>
               </button>
@@ -66,17 +64,15 @@
       <div class="form-group text-center">
         <div class="col-xs-6">
           <a id="form-cancel" href="/campgrounds">cancel</span>
-          <!--<a class="btn btn-lg btn-default form-button">cancel</a>-->
-        </div><!-- col  -->
+        </div><!-- col -->
         <div class="col-xs-6">
           <a id="form-done" href="javascript:document.new_campground.submit()">done</span>
-          <!--<button class="btn btn-lg btn-success form-button">done</button>-->
-        </div><!-- col  -->
+        </div><!-- col -->
       </div><!-- form-group -->
     </div><!-- row -->
 
-    <input id="submit-rental-period" type="hidden" name="campground[rental_period]" value="night"></input>
-    <input id="submit-image" type="hidden" name="campground[image]" value=""></input>
+    <input id="submit-rent-cycle" type="hidden" name="campground[rent_cycle]" value="night"></input>
+    <input id="submit-pic" type="hidden" name="campground[image]" value=""></input>
 
   </form>
 
