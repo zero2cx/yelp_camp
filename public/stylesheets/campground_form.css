@@ -26,11 +26,43 @@
   max-width: 340px;
   width: 100%;
 }
+.form-group,
 .input-group {
   z-index: 0;
 }
 .form-button {
   width: 100px;
+}
+
+/*******************/
+#form-title {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 2em;
+}
+#form-cancel {
+  /*border: 1px red solid;*/
+  margin: 0 auto;
+  color: black;
+  font-size: 2em;
+  text-decoration: none;
+  transition: 0.1s;
+}
+#form-cancel:hover {
+  cursor: pointer;
+  color: #808080;
+}
+#form-done {
+  /*border: 1px red solid;*/
+  margin: 0 auto;
+  color: black;
+  font-size: 2em;
+  text-decoration: none;
+  transition: 0.1s;
+}
+#form-done:hover {
+  cursor: pointer;
+  color: #808080;
 }
 
 /*******************/
@@ -40,6 +72,7 @@
   height: 100%;
 }
 #thumb-no-pic {
+  display: none;
   text-align: center;
   font-size: 5em;
   z-index: 2;
@@ -65,9 +98,9 @@
   display: none;
   position: fixed;
   width: 100%;
-  min-height: 360px;
+  min-height: 340px;
   max-height: 550px;
-  top: 8%;
+  top: 10%;
   z-index: 1;
   text-align: center;
   border-radius: 10px;
@@ -102,6 +135,7 @@
   color: white;
   font-size: 16em;
   z-index: 2;
+  text-decoration: none;
 }
 #popup-pic {
   display: block;
