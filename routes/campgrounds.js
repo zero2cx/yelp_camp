@@ -44,7 +44,7 @@ router.post("/", Middleware.isLoggedIn, function(req, res) {
   Campground.create({
     name: name,
     price: price,
-    rental_period: rental_period,
+    rent_cycle: rent_cycle,
     image: image,
     description: desc,
     author: author
