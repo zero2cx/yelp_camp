@@ -1,113 +1,223 @@
-/*******************/
-/* DEBUG ONLY ******/
-/*******************/
-/* * {
-  border: 1px solid red;
-} */
-/* .hidden {
-  display: none;
-} */
-.no-pad-left {
-	padding-left: 0;
-}
-.no-pad-right {
-  padding-right: 0;
-}
-.sm-pad-right {
-  padding-right: 4px;
-}
-.container,
-#popup-dialog {
-  min-width: 340px;
-  max-width: 340px;
-  width: 100%;
-}
-.input-group {
-  z-index: 0;
-}
+/**********************************/
+/**  DEBUG ONLY  ******************/
+/**********************************/
+/* .input-group { border: 1px solid black; } */
+/* .form-container { border: 1px solid green; } */
+/* div[class^="column-"], div[class*=" column-"] { border: 1px solid orange; } */
+/* .form-row { border: 1px solid red; } */
+/* * { border: 1px solid blue; } */
+/******************************************************/
+ .hidden { display: none; }
+/* .hide-popup { display: none; } */
+/* .hide-no-thumb { display: none; } */
+/* .hide-thumb { display: none; } */
+/******************************************************/
 
-/*******************/
-#thumb-no-pic {
-  text-align: center;
-  font-size: 5em;
-  z-index: 2;
-  cursor: pointer;
-  transition: 0.1s;
-}
-#thumb-no-pic:hover {
-  opacity: 0.8;
-}
-/*******************/
-#thumb-pic {
-  cursor: pointer;
-  transition: 0.1s;
-}
-#thumb-pic:hover {
-  opacity: 0.8;
-}
+/**********************************/
+/**  GENERIC PROPERTIES  **********/
+/**********************************/
+body { margin: 0; padding: 0; font-family: Lato, sans-serif; box-sizing: border-box; }
+button, input, textarea { font-family: inherit; }
+*, *:before, *:after { box-sizing: inherit; }
+.base-form { z-index: 0; width: inherit;}
+.popup-form { z-index: 10; }
+.form-row, div[class^="column-"], div[class*=" column-"], .input-group, .form-thumb { z-index: inherit; }
+/******************************************************/
 
-/*******************/
-/* IMAGE PICKER ****/
-/*******************/
-#popup-dialog {
-  position: fixed;
+/**********************************/
+/**  FORM COMPONENTS  *************/
+/**********************************/
+.form-container {
+  margin: 0 auto;
+  width: 320px;
+  min-width: 320px;
+}
+/******************************************************/
+.form-row {
+  display: table;
   width: 100%;
-  min-height: 300px;
-  max-height: 550px;
-  top: 4%;
-  z-index: 1;
   text-align: center;
-  border-radius: 10px;
-  background-color: rgb(0, 0, 0);
 }
-#popup-cancel {
-  position: absolute;
-  top: 8px;
-  left: 14px;
-  color: #f0f0f0;
-  font-size: 2em;
-  transition: 0.1s;
+/******************************************************/
+.form-title {
+  margin: 8px auto;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
 }
-#popup-cancel:hover {
+/******************************************************/
+.form-input {
+  height: 30px;
+  width: 100%;
+  margin: 9px auto;
+  padding: 4px 8px;
+  font-size: 0.8em;
+  color: #303030;
+  background-color: #f8f8f8;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+}
+textarea.form-input {
+  margin: 12px 0 0 0;
+  width: 100%;
+  min-height: 80px;
+  font-weight: 400;
+  resize: none;
+}
+/******************************************************/
+.form-thumb:hover {
+  opacity: 0.8;
   cursor: pointer;
-  color: #c0c0c0;
 }
-#popup-done {
-  position: absolute;
-  top: 8px;
-  right: 14px;
-  color: #f0f0f0;
-  font-size: 2em;
-  transition: 0.1s;
+.form-thumb {
+  width: 100%;
+  height: auto;
+  min-height: 80px;
+  max-height: 80px;
+  margin-top: 9px;
+  padding: 3px;
+  font-size: 3em;
+  text-align: center;
+  color: #303030;
+  background-color: #f8f8f8;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
 }
-#popup-done:hover {
+/******************************************************/
+a.form-button:hover {
+  opacity: 0.6;
   cursor: pointer;
-  color: #c0c0c0;
 }
-#popup-no-pic {
-  margin: 44px auto 30px;
-  color: white;
-  font-size: 16em;
-  z-index: 2;
-}
-#popup-pic {
+a.form-button {
   display: block;
+  padding-top: 9px;
+  text-decoration: none;
+  transition: 0.1s;
+}
+.base-form a.form-button {
+  color: black;
+}
+.popup-form a.form-button {
+  color: #f0f0f0;
+}
+/******************************************************/
+
+/**********************************/
+/**  POPUP FORM COMPONENTS  *******/
+/**********************************/
+.popup-form {
+  position: absolute;
+  display: none;
+  margin: 10px auto;
+  width: inherit;
+  min-height: 280px;
+  max-height: 550px;
+  border-radius: 10px;
+  background-color: rgb(40, 40, 40);
+}
+/******************************************************/
+i.popup-image {
+  color: white;
+  font-size: 11em;
+}
+img.popup-image {
+  margin: 8px auto;
   width: 95%;
-  margin: 50px auto 60px;
+  color: rgb(40, 40, 40);
   border-radius: 5px;
 }
-#popup-url {
-  position: absolute;
-  bottom: 4px;
-  left: 7px;
+/******************************************************/
+.popup-form .form-input {
+  margin-top: 0;
+  margin-bottom: 8px;
   width: 95%;
-  margin: 6px auto;
-  padding: 6px;
 }
+/******************************************************/
 
-/*******************/
-.form-thumbnail {
-  max-height: 84px;
-  width: 100%;
-  height: 100%;
+/**********************************/
+/**  DROPDOWN BUTTON & MENU  ******/
+/**********************************/
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: collapse;
 }
+/******************************************************/
+.input-group .form-input {
+  position: relative;
+  display: table-cell;
+  border-radius: 4px 0 0 4px;
+}
+/******************************************************/
+.input-group .dropdown-group {
+  position: relative;
+  display: table-cell;
+}
+/******************************************************/
+.dropdown-group .dropdown-button {
+  position: relative;
+  display: inline-flex;
+  min-width: 88px;
+  padding: 5px 0 5px 10px;
+  border: 0;
+  font-size: 0.7em;
+  line-height: 1.2;
+  border-radius: 0 4px 4px 0;
+}
+/******************************************************/
+.dropdown-group .dropdown-button .caret {
+  margin: 9px 7px 0 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid black;
+}
+/******************************************************/
+.dropdown-group .dropdown-menu {
+  position: absolute;
+  display: none;
+  min-width: 70px;
+  background-color: #f0f0f0;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+/******************************************************/
+.dropdown-group .dropdown-menu .menu-item:last-child {
+  border-radius: 0 0 4px 4px;
+}
+.dropdown-group .dropdown-menu .menu-item:hover {
+  background-color: #e0e0f0;
+}
+.dropdown-group .dropdown-menu .menu-item {
+  display: block;
+  width: 100%;
+  padding-left: 10px;
+  padding-bottom: 2px;
+  color: black;
+  font-size: 0.7em;
+  text-decoration: none;
+}
+/******************************************************/
+
+/**********************************/
+/**  COLUMN PROPERTIES  ***********/
+/**********************************/
+div[class^="column-left-"], div[class*=" column-left-"] {
+  float: left;
+  padding-right: 8px;
+}
+div[class^="column-right-"], div[class*=" column-right-"] {
+  float: right;
+  padding-left: 8px;
+}
+.column-left-10, .column-right-10 { width: 10%; }
+.column-left-20, .column-right-20 { width: 20%; }
+.column-left-30, .column-right-30 { width: 30%; }
+.column-left-40, .column-right-40 { width: 40%; }
+.column-left-50, .column-right-50 { width: 50%; }
+.column-left-60, .column-right-60 { width: 60%; }
+.column-left-70, .column-right-70 { width: 70%; }
+.column-left-80, .column-right-80 { width: 80%; }
+.column-left-90, .column-right-90 { width: 90%; }
+.column-center { text-align: center; }
+/******************************************************/

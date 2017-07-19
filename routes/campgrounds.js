@@ -34,7 +34,7 @@ router.get("/new", Middleware.isLoggedIn, function(req, res) {
 router.post("/", Middleware.isLoggedIn, function(req, res) {
   var name = req.body.campground.name;
   var price = req.body.campground.price;
-  var rental_period = req.body.campground.rental_period;
+  var rent_cycle = req.body.campground.rent_cycle;
   var image = req.body.campground.image;
   var desc = req.body.campground.description;
   var author = {
@@ -90,7 +90,9 @@ router.get("/:id/edit", Middleware.checkCampgroundOwnership, function(req, res) 
     }
     else {
       res.render("campgrounds/edit", {
-        campground: campground
+        campground: campground,
+        form_name: "edit_campground",
+        form_title: "edit campground"
       });
     }
   });
