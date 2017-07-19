@@ -48,17 +48,17 @@ thumbPic.on('error', function() { //console.log('++ INVALID THUMB PIC');
   thumbPic.attr({
     src: '',
     alt: ''
-  }).hide();
+  }).hide().unbind('error');
 });
 
 //////////////////////////////////////////////////////
 // ERROR: hide an invalid image in the POPUP PIC
 popupPic.on('error', function() { //console.log('++ INVALID POPUP PIC');
-  popupNoPic.show();
   popupPic.attr({
     src: '',
     alt: ''
-  }).hide();
+  }).hide().unbind('error');
+  popupNoPic.show();
 });
 
 //////////////////////////////////////////////////////
@@ -75,14 +75,23 @@ popupUrl.on('input', function() { //console.log('++ POPUP URL HAS CHANGED');
 //////////////////////////////////////////////////////
 // CLICK: handle a click on DONE BUTTON
 popupDone.on('click', function() { //console.log('++ POPUP DONE CLICKED');
-  // thumbPic.attr({ src: popupUrl.val(), alt: popupUrl.val() });
-  if (popupPic.attr('alt') != '') {
+
+  if (popupPic.attr('alt') == '') {
+    thumbNoPic.show();
+    thumbPic.attr({
+      src: '',
+      alt: ''
+    }).hide();
+  }
+
+  else {
+    thumbNoPic.hide();
     thumbPic.attr({
       src: popupPic.attr('src'),
       alt: popupPic.attr('alt')
-    });
-    thumbPic.show() && thumbNoPic.hide();
+    }).show();
   }
+
   popupDialog.hide();
 });
 
