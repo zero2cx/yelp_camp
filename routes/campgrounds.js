@@ -1,9 +1,12 @@
-/* file: routes/campgrounds.js                    */
-/* project: YelpCamp                              */
-/* developer: David Schenck <zero2cx @ gmail com> */
-/* original author & project design:              */
-/*     Colt Steele <www facebook com colt.steele> */
-/* license: ISC                                   */
+/* file: routes/campgrounds.js                     */
+/* project: YelpCamp                               */
+/* developer: David Schenck                        */
+/*     <zero2cx @ gmail com>                       */
+/* original author & project design: Colt Steele   */
+/*     <www facebook com colt.steele>              */
+/* project refactor: Ian Schoonover                */
+/*     <plus google com/u/0/117096754871952321821> */
+/* license: ISC                                    */
 
 var express = require('express');
 var router = express.Router();
@@ -35,8 +38,10 @@ router.get('/', function(req, res) {
 // display the new-campground form
 router.get('/new', Middleware.isLoggedIn, function(req, res) {
   res.render('campgrounds/new', {
-    styles: [bootstrap, fontawesome, '/styles/main.css', '/styles/new_form.css'],
-    scripts: []
+    form_name: 'new_campground',
+    form_title: 'new campground',
+    styles: [bootstrap, fontawesome, '/styles/main.css', '/styles/campground_form.css'],
+    scripts: ['/scripts/campground_form.js']
   });
 });
 
@@ -104,8 +109,8 @@ router.get('/:id/edit', Middleware.checkCampgroundOwnership, function(req, res) 
         campground: campground,
         form_name: 'edit_campground',
         form_title: 'edit campground',
-        styles: [bootstrap, fontawesome, '/styles/main.css'],
-        scripts: []
+        styles: [bootstrap, fontawesome, '/styles/main.css', 'campground_form.css'],
+        scripts: ['/scripts/campground_form.js']
       });
     }
   });

@@ -1,9 +1,12 @@
-/* file: public/style/edit_form.js                */
-/* project: YelpCamp                              */
-/* developer: David Schenck <zero2cx @ gmail com> */
-/* original author & project design:              */
-/*     Colt Steele <www facebook com colt.steele> */
-/* license: ISC                                   */
+/* file: public/style/edit_form.js                 */
+/* project: YelpCamp                               */
+/* developer: David Schenck                        */
+/*     <zero2cx @ gmail com>                       */
+/* original author & project design: Colt Steele   */
+/*     <www facebook com colt.steele>              */
+/* project refactor: Ian Schoonover                */
+/*     <plus google com/u/0/117096754871952321821> */
+/* license: ISC                                    */
 
 /**************************************************/
 /**  DEBUG ONLY  **********************************/
@@ -168,7 +171,9 @@ img.popup-image {
 }
 /**************************************************/
 .dropdown-group .dropdown-button .caret {
-  margin: 9px 7px 0 0;
+  /*margin: 0 0 0 0;*/
+  margin-top: 6px;
+  margin-left: 4px;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 6px solid black;

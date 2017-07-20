@@ -1,9 +1,12 @@
-/* file: routes/index.js                          */
-/* project: YelpCamp                              */
-/* developer: David Schenck <zero2cx @ gmail com> */
-/* original author & project design:              */
-/*     Colt Steele <www facebook com colt.steele> */
-/* license: ISC                                   */
+/* file: routes/index.js                           */
+/* project: YelpCamp                               */
+/* developer: David Schenck                        */
+/*     <zero2cx @ gmail com>                       */
+/* original author & project design: Colt Steele   */
+/*     <www facebook com colt.steele>              */
+/* project refactor: Ian Schoonover                */
+/*     <plus google com/u/0/117096754871952321821> */
+/* license: ISC                                    */
 
 var express = require("express");
 var router = express.Router();
