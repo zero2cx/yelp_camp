@@ -1,5 +1,9 @@
-// file: app.js
-// dev: david schenck
+/* file: app.js                                   */
+/* project: YelpCamp                              */
+/* developer: David Schenck <zero2cx @ gmail com> */
+/* original author & project design:              */
+/*     Colt Steele <www facebook com colt.steele> */
+/* license: ISC                                   */
 
 var express = require("express");
 var app = express();
@@ -12,7 +16,7 @@ var methodOverride = require("method-override");
 var Campground = require("./models/campground");
 var Comment = require("./models/comment");
 var User = require("./models/user");
-var seedDatabase = require("./seed-db");
+// var seedDatabase = require("./seed-db");
 var indexRoutes = require("./routes/index");
 var campgroundRoutes = require("./routes/campgrounds");
 var commentRoutes = require("./routes/comments");

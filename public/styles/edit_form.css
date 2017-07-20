@@ -1,51 +1,55 @@
-/**********************************/
-/**  DEBUG ONLY  ******************/
-/**********************************/
+/* file: public/style/edit_form.js                */
+/* project: YelpCamp                              */
+/* developer: David Schenck <zero2cx @ gmail com> */
+/* original author & project design:              */
+/*     Colt Steele <www facebook com colt.steele> */
+/* license: ISC                                   */
+
+/**************************************************/
+/**  DEBUG ONLY  **********************************/
+/**************************************************/
 /* .input-group { border: 1px solid black; } */
 /* .form-container { border: 1px solid green; } */
 /* div[class^="column-"], div[class*=" column-"] { border: 1px solid orange; } */
 /* .form-row { border: 1px solid red; } */
 /* * { border: 1px solid blue; } */
-/******************************************************/
  .hidden { display: none; }
 /* .hide-popup { display: none; } */
 /* .hide-no-thumb { display: none; } */
 /* .hide-thumb { display: none; } */
-/******************************************************/
 
-/**********************************/
-/**  GENERIC PROPERTIES  **********/
-/**********************************/
+/**************************************************/
+/**  GENERIC PROPERTIES  **************************/
+/**************************************************/
 body { margin: 0; padding: 0; font-family: Lato, sans-serif; box-sizing: border-box; }
 button, input, textarea { font-family: inherit; }
 *, *:before, *:after { box-sizing: inherit; }
 .base-form { z-index: 0; width: inherit;}
 .popup-form { z-index: 10; }
 .form-row, div[class^="column-"], div[class*=" column-"], .input-group, .form-thumb { z-index: inherit; }
-/******************************************************/
 
-/**********************************/
-/**  FORM COMPONENTS  *************/
-/**********************************/
+/**************************************************/
+/**  FORM COMPONENTS  *****************************/
+/**************************************************/
 .form-container {
   margin: 0 auto;
   width: 320px;
   min-width: 320px;
 }
-/******************************************************/
+/**************************************************/
 .form-row {
   display: table;
   width: 100%;
   text-align: center;
 }
-/******************************************************/
+/**************************************************/
 .form-title {
   margin: 8px auto;
   width: 100%;
   text-align: center;
   font-weight: 700;
 }
-/******************************************************/
+/**************************************************/
 .form-input {
   height: 30px;
   width: 100%;
@@ -64,7 +68,7 @@ textarea.form-input {
   font-weight: 400;
   resize: none;
 }
-/******************************************************/
+/**************************************************/
 .form-thumb:hover {
   opacity: 0.8;
   cursor: pointer;
@@ -83,7 +87,7 @@ textarea.form-input {
   border: 1px solid #d0d0d0;
   border-radius: 4px;
 }
-/******************************************************/
+/**************************************************/
 a.form-button:hover {
   opacity: 0.6;
   cursor: pointer;
@@ -100,11 +104,10 @@ a.form-button {
 .popup-form a.form-button {
   color: #f0f0f0;
 }
-/******************************************************/
 
-/**********************************/
-/**  POPUP FORM COMPONENTS  *******/
-/**********************************/
+/**************************************************/
+/**  POPUP FORM COMPONENTS  ***********************/
+/**************************************************/
 .popup-form {
   position: absolute;
   display: none;
@@ -115,7 +118,7 @@ a.form-button {
   border-radius: 10px;
   background-color: rgb(40, 40, 40);
 }
-/******************************************************/
+/**************************************************/
 i.popup-image {
   color: white;
   font-size: 11em;
@@ -126,34 +129,33 @@ img.popup-image {
   color: rgb(40, 40, 40);
   border-radius: 5px;
 }
-/******************************************************/
+/**************************************************/
 .popup-form .form-input {
   margin-top: 0;
   margin-bottom: 8px;
   width: 95%;
 }
-/******************************************************/
 
-/**********************************/
-/**  DROPDOWN BUTTON & MENU  ******/
-/**********************************/
+/**************************************************/
+/**  DROPDOWN BUTTON & MENU  **********************/
+/**************************************************/
 .input-group {
   position: relative;
   display: table;
   border-collapse: collapse;
 }
-/******************************************************/
+/**************************************************/
 .input-group .form-input {
   position: relative;
   display: table-cell;
   border-radius: 4px 0 0 4px;
 }
-/******************************************************/
+/**************************************************/
 .input-group .dropdown-group {
   position: relative;
   display: table-cell;
 }
-/******************************************************/
+/**************************************************/
 .dropdown-group .dropdown-button {
   position: relative;
   display: inline-flex;
@@ -164,14 +166,14 @@ img.popup-image {
   line-height: 1.2;
   border-radius: 0 4px 4px 0;
 }
-/******************************************************/
+/**************************************************/
 .dropdown-group .dropdown-button .caret {
   margin: 9px 7px 0 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 6px solid black;
 }
-/******************************************************/
+/**************************************************/
 .dropdown-group .dropdown-menu {
   position: absolute;
   display: none;
@@ -181,7 +183,7 @@ img.popup-image {
   box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
-/******************************************************/
+/**************************************************/
 .dropdown-group .dropdown-menu .menu-item:last-child {
   border-radius: 0 0 4px 4px;
 }
@@ -197,11 +199,10 @@ img.popup-image {
   font-size: 0.7em;
   text-decoration: none;
 }
-/******************************************************/
 
-/**********************************/
-/**  COLUMN PROPERTIES  ***********/
-/**********************************/
+/**************************************************/
+/**  COLUMN PROPERTIES  ***************************/
+/**************************************************/
 div[class^="column-left-"], div[class*=" column-left-"] {
   float: left;
   padding-right: 8px;
@@ -220,4 +221,3 @@ div[class^="column-right-"], div[class*=" column-right-"] {
 .column-left-80, .column-right-80 { width: 80%; }
 .column-left-90, .column-right-90 { width: 90%; }
 .column-center { text-align: center; }
-/******************************************************/

@@ -1,0 +1,15 @@
+<% /* file: views/partials/content-flash.ejs          */ %>
+<% /* project: YelpCamp                               */ %>
+<% /* developer: David Schenck <zero2cx @ gmail com>  */ %>
+<% /* original author & project design:               */ %>
+<% /*     Colt Steele <www facebook com colt.steele>  */ %>
+<% /* license: ISC                                    */ %>
+
+    <div class="container">
+<% if(error && error.length > 0) { %>
+      <div class="alert alert-danger"><%= error %></div>
+<% } %>
+<% if(success && success.length > 0) { %>
+      <div class="alert alert-success"><%= success %></div>
+<% } %>
+    </div><!-- container -->

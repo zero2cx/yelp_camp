@@ -1,3 +1,10 @@
+/* file: public/script/edit_form.js               */
+/* project: YelpCamp                              */
+/* developer: David Schenck <zero2cx @ gmail com> */
+/* original author & project design:              */
+/*     Colt Steele <www facebook com colt.steele> */
+/* license: ISC                                   */
+
 var popupDialog = $('#popup-dialog');
 var popupPic = $('#popup-pic');
 var popupNoPic = $('#popup-no-pic');
@@ -82,9 +89,7 @@ popupDone.on('click', function() { //console.log('++ POPUP DONE CLICKED');
       src: '',
       alt: ''
     }).hide();
-  }
-
-  else {
+  } else {
     thumbNoPic.hide();
     thumbPic.attr({
       src: popupPic.attr('src'),

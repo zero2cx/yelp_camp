@@ -1,6 +1,15 @@
-<% include ../partials/header %>
+<% /* file: views/user/login.ejs                      */ %>
+<% /* project: YelpCamp                               */ %>
+<% /* developer: David Schenck <zero2cx @ gmail com>  */ %>
+<% /* original author & project design:               */ %>
+<% /*     Colt Steele <www facebook com colt.steele>  */ %>
+<% /* license: ISC                                    */ %>
 
-<h1>login existing user form</h1>
+<% include ../partials/page-header %>
+<% include ../partials/content-navbar %>
+<% include ../partials/content-flash %>
+
+<h1>login form</h1>
 
 <form action="/user/login" method="POST">
   <input type="text" name="username" placeholder="username">
@@ -8,4 +17,4 @@
   <button>Submit</button>
 </form>
 
-<% include ../partials/footer %>
+<% include ../partials/page-footer %>

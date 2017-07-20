@@ -1,3 +1,10 @@
+/* file: middleware/index.js                      */
+/* project: YelpCamp                              */
+/* developer: David Schenck <zero2cx @ gmail com> */
+/* original author & project design:              */
+/*     Colt Steele <www facebook com colt.steele> */
+/* license: ISC                                   */
+
 var Campground = require("../models/campground");
 var Comment = require("../models/comment");
 
@@ -22,20 +29,17 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
         req.flash("error", "Campground not found");
         console.log("** error: " + err);
         res.redirect("back");
-      }
-      else {
+      } else {
         if (campground.author.id.equals(req.user._id)) {
           next();
-        }
-        else {
+        } else {
           req.flash("error", "Insufficient Permissions: Not Authorized to Continue");
           console.log("** error: Insufficient Permissions: Not Authorized to Continue");
           res.redirect("back");
         }
       }
     });
-  }
-  else {
+  } else {
     req.flash("error", "Please log in to edit a campground");
     console.log("** error: please log in to edit a campground");
     res.redirect("back");
@@ -50,19 +54,16 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
       if (err) {
         console.log("** error: " + err);
         res.redirect("back");
-      }
-      else {
+      } else {
         if (comment.author.id.equals(req.user._id)) {
           next();
-        }
-        else {
+        } else {
           console.log("** error: permissions insufficient to edit or delete this campground");
           res.redirect("back");
         }
       }
     });
-  }
-  else {
+  } else {
     console.log("** error: please log in to edit a campground");
     res.redirect("back");
   }

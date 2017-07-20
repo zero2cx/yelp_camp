@@ -1,13 +1,9 @@
-<! DOCTYPE html>
-<html>
-  <head>
-    <title>YelpCamp</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/stylesheets/main.css">
-    <link rel="stylesheet" href="/stylesheets/edit_form.css">
-  </head>
-  <body>
+<% /* file: views/partials/content-navbar.ejs         */ %>
+<% /* project: YelpCamp                               */ %>
+<% /* developer: David Schenck <zero2cx @ gmail com>  */ %>
+<% /* original author & project design:               */ %>
+<% /*     Colt Steele <www facebook com colt.steele>  */ %>
+<% /* license: ISC                                    */ %>
 
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -30,12 +26,3 @@
         </div>
       </div>
     </nav>
-
-    <div class="container">
-<% if(error && error.length > 0) { %>
-      <div class="alert alert-danger"><%= error %></div>
-<% } %>
-<% if(success && success.length > 0) { %>
-      <div class="alert alert-success"><%= success %></div>
-<% } %>
-    </div><!-- container -->

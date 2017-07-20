@@ -1,3 +1,10 @@
+/* file: routes/comments.js                       */
+/* project: YelpCamp                              */
+/* developer: David Schenck <zero2cx @ gmail com> */
+/* original author & project design:              */
+/*     Colt Steele <www facebook com colt.steele> */
+/* license: ISC                                   */
+
 var express = require("express");
 var router = express.Router({
   mergeParams: true
@@ -5,6 +12,7 @@ var router = express.Router({
 var Campground = require("../models/campground");
 var Comment = require("../models/comment");
 var Middleware = require("../middleware");
+var bootstrap = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
 
 
 // ROUTE: NEW COMMENT
@@ -15,10 +23,11 @@ router.get("/new", Middleware.isLoggedIn, function(req, res) {
       req.flash("error", err.message);
       console.log("** error: " + err.message);
       res.redirect("/campgrounds");
-    }
-    else {
+    } else {
       res.render("comments/new", {
-        campground: campground
+        campground: campground,
+        styles: [bootstrap, '/styles/main.css'],
+        scripts: []
       });
     }
   });
@@ -32,15 +41,13 @@ router.post("/", Middleware.isLoggedIn, function(req, res) {
       req.flash("error", err.message);
       console.log("** error: " + err.message);
       res.redirect("/campgrounds");
-    }
-    else {
+    } else {
       Comment.create(req.body.comment, function(err, comment) {
         if (err) {
           req.flash("error", err.message);
           console.log("** error: " + err.message);
           res.redirect("/campgrounds");
-        }
-        else {
+        } else {
           comment.author.id = req.user._id;
           comment.author.username = req.user.username;
           comment.save();
@@ -62,11 +69,12 @@ router.get("/:comment_id/edit", Middleware.checkCommentOwnership, function(req, 
       req.flash("error", err.message);
       console.log("** error: " + err.message);
       res.redirect("/campgrounds");
-    }
-    else {
+    } else {
       res.render("comments/edit", {
         comment: comment,
-        campgroundId: req.params.id
+        campgroundId: req.params.id,
+        styles: [bootstrap, fontawesome, '/styles/main.css'],
+        scripts: []
       });
     }
   });
@@ -81,8 +89,7 @@ router.put("/:comment_id", Middleware.checkCommentOwnership, function(req, res) 
       req.flash("error", err.message);
       console.log("** error: " + err.message);
       res.redirect("/campgrounds");
-    }
-    else {
+    } else {
       res.redirect("/campgrounds/" + req.params.id)
     }
   });
@@ -97,8 +104,7 @@ router.delete("/:comment_id", Middleware.checkCommentOwnership, function(req, re
       req.flash("error", err.message);
       console.log("** error: " + err.message);
       res.redirect("/campgrounds");
-    }
-    else {
+    } else {
       res.redirect("/campgrounds/" + req.params.id)
     }
   });

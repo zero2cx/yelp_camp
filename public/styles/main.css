@@ -1,0 +1,23 @@
+/* file: public/style/main.js                     */
+/* project: YelpCamp                              */
+/* developer: David Schenck <zero2cx @ gmail com> */
+/* original author & project design:              */
+/*     Colt Steele <www facebook com colt.steele> */
+/* license: ISC                                   */
+
+.thumbnail {
+  padding: 0;
+}
+.thumbnail img {
+  width: 100%;
+}
+.thumbnail .caption-full {
+  padding: 9px;
+}
+.delete-form {
+  display: inline;
+}
+.jumbotron {
+  color: #f0f080;
+  background-color: #004020;
+}

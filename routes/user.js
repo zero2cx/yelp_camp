@@ -1,13 +1,24 @@
+/* file: routes/user.js                           */
+/* project: YelpCamp                              */
+/* developer: David Schenck <zero2cx @ gmail com> */
+/* original author & project design:              */
+/*     Colt Steele <www facebook com colt.steele> */
+/* license: ISC                                   */
+
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
 var Middleware = require("../middleware");
+var bootstrap = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
 
 
 //
 router.get("/register", function(req, res) {
-  res.render("user/register");
+  res.render("user/register", {
+    styles: [bootstrap, '/styles/main.css'],
+    scripts: []
+  });
 });
 
 
@@ -32,7 +43,10 @@ router.post("/register", function(req, res) {
 
 //
 router.get("/login", function(req, res) {
-  res.render("user/login");
+  res.render("user/login", {
+    styles: [bootstrap, '/styles/main.css'],
+    scripts: []
+  });
 });
 
 
