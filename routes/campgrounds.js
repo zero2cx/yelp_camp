@@ -14,6 +14,7 @@ var Campground = require('../models/campground');
 var Middleware = require('../middleware');
 var bootstrap = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
 var fontawesome = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+var jquery = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js';
 
 // ROUTE: INDEX CAMPGROUNDS
 // display all-campgrounds list
@@ -21,7 +22,7 @@ router.get('/', function(req, res) {
   Campground.find({}, function(err, campgrounds) {
     if (err) {
       req.flash('error', err.message);
-      console.log('** error: ' + err.message);
+      console.log('**1 error: ' + err.message);
       res.redirect('back');
     } else {
       res.render('campgrounds/index', {
@@ -41,7 +42,7 @@ router.get('/new', Middleware.isLoggedIn, function(req, res) {
     form_name: 'new_campground',
     form_title: 'new campground',
     styles: [bootstrap, fontawesome, '/styles/main.css', '/styles/campground_form.css'],
-    scripts: ['/scripts/campground_form.js']
+    scripts: []
   });
 });
 
@@ -68,7 +69,7 @@ router.post('/', Middleware.isLoggedIn, function(req, res) {
   }, function(err, campground) {
     if (err) {
       req.flash('error', err.message);
-      console.log('** error: ' + err.message);
+      console.log('**2 error: ' + err.message);
       res.redirect('/campgrounds');
     } else {
       res.redirect('/campgrounds');
@@ -83,7 +84,7 @@ router.get('/:id', function(req, res) {
   Campground.findById(req.params.id).populate('comments').exec(function(err, campground) {
     if (err) {
       req.flash('error', err.message);
-      console.log('** error: ' + err.message);
+      console.log('**3 error: ' + err.message);
       res.redirect('/campgrounds');
     } else {
       res.render('campgrounds/show', {
@@ -102,15 +103,16 @@ router.get('/:id/edit', Middleware.checkCampgroundOwnership, function(req, res) 
   Campground.findById(req.params.id, function(err, campground) {
     if (err) {
       req.flash('error', err.message);
-      console.log('** error: ' + err.message);
+      console.log('**4 error: ' + err.message);
       res.redirect('/campgrounds');
     } else {
       res.render('campgrounds/edit', {
         campground: campground,
         form_name: 'edit_campground',
         form_title: 'edit campground',
-        styles: [bootstrap, fontawesome, '/styles/main.css', 'campground_form.css'],
-        scripts: ['/scripts/campground_form.js']
+        styles: [bootstrap, fontawesome, '/styles/main.css', '/styles/campground_form.css'],
+        // scripts: [jquery, '/scripts/campground_form.js']
+        scripts: []
       });
     }
   });
@@ -123,7 +125,7 @@ router.put('/:id', Middleware.checkCampgroundOwnership, function(req, res) {
   Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, campground) {
     if (err) {
       req.flash('error', err.message);
-      console.log('** error: ' + err.message);
+      console.log('**5 error: ' + err.message);
       res.redirect('/campgrounds');
     } else {
       res.redirect('/campgrounds/' + req.params.id);
@@ -138,13 +140,12 @@ router.delete('/:id', Middleware.checkCampgroundOwnership, function(req, res) {
   Campground.findByIdAndRemove(req.params.id, function(err) {
     if (err) {
       req.flash('error', err.message);
-      console.log('** error: ' + err.message);
+      console.log('**6 error: ' + err.message);
       res.redirect('/campgrounds');
     } else {
       res.redirect('/campgrounds');
     }
   });
 });
-
 
 module.exports = router;

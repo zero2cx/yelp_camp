@@ -8,6 +8,8 @@
 /*     <plus google com/u/0/117096754871952321821> */
 /* license: ISC                                    */
 
+"use strict";
+
 var popupDialog = $('#popup-dialog');
 var popupPic = $('#popup-pic');
 var popupNoPic = $('#popup-no-pic');
@@ -22,94 +24,71 @@ var submitRentCycle = $('#submit-rent-cycle');
 var submitPic = $('#submit-pic');
 var currentThumb;
 
-////////////////////////////
-// DEBUG ONLY //////////////
-////////////////////////////
-// var thumbFromServer = false; if (thumbFromServer) { thumbPic.attr({src: 'https://farm4.staticflickr.com/3232/2678020846_5acd913ba6.jpg', alt: 'https://farm4.staticflickr.com/3232/2678020846_5acd913ba6.jpg'}).show() && thumbNoPic.hide(); } else { thumbPic.attr({src: '', alt: ''}).hide() && thumbNoPic.show(); }
+// show() will make visible the element using 'display: block;'
+thumbPic.show = function() {
+  $(this).css('display', 'block');
+}
+thumbNoPic.show = function() {
+  $(this).css('display', 'block');
+}
+
+// display one of the two thumbnail elements
+if (thumbPic.attr('src') == '') {
+  thumbNoPic.show();
+} else {
+  thumbPic.show();
+}
 
 //////////////////////////////////////////////////////
-// CLICK: handle a click on the THUMBNAIL PIC
+// ON CLICK: handle a click on the THUMBNAIL PIC
 thumbPic.on('click', function() { //console.log('++ IMAGE THUMBNAIL CLICKED');
-  currentThumb = thumbPic.attr('alt');
+  currentThumb = thumbPic.attr('src');
   popupUrl.val(currentThumb);
-  popupPic.attr({
-    src: currentThumb,
-    alt: currentThumb
-  }).show() && popupNoPic.hide();
+  popupPic.attr('src', currentThumb).show();
+  popupNoPic.hide();
   popupDialog.show();
+
 });
 
 //////////////////////////////////////////////////////
-// CLICK: handle a click on the NO_PIC ICON
+// ON CLICK: handle a click on the NO_PIC THUMBNAIL
 thumbNoPic.on('click', function() { //console.log('++ NO-PIC THUMBNAIL CLICKED');
   currentThumb = '';
-  popupUrl.val(currentThumb);
-  popupPic.attr({
-    src: currentThumb,
-    alt: currentThumb
-  }).hide() && popupNoPic.show();
+  popupUrl.val('');
+  popupPic.attr('src', '').hide();
+  popupNoPic.show();
   popupDialog.show();
 });
 
-//////////////////////////////////////////////////////
-// ERROR: hide an invalid image in the THUMBNAIL PIC
-thumbPic.on('error', function() { //console.log('++ INVALID THUMB PIC');
-  thumbNoPic.show();
-  thumbPic.attr({
-    src: '',
-    alt: ''
-  }).hide().unbind('error');
-});
-
-//////////////////////////////////////////////////////
-// ERROR: hide an invalid image in the POPUP PIC
-popupPic.on('error', function() { //console.log('++ INVALID POPUP PIC');
-  popupPic.attr({
-    src: '',
-    alt: ''
-  }).hide().unbind('error');
-  popupNoPic.show();
-});
-
-//////////////////////////////////////////////////////
-// INPUT: attempt to display the IMAGE URL
+//////////////////////////////////////////////////////***************
+// ON INPUT: attempt to display the IMAGE URL in the POPUP PIC
 popupUrl.on('input', function() { //console.log('++ POPUP URL HAS CHANGED');
+  popupPic.on('error', function() {
+    popupPic.unbind('error').attr('src', '').hide();
+    popupNoPic.show();
+  }).attr('src', $(this).val()).show();
   popupNoPic.hide();
-  popupPic.attr({
-    src: popupUrl.val(),
-    alt: popupUrl.val()
-  }).show();
-  // popupPic.attr({ src: popupUrl.val(), alt: popupUrl.val() });
 });
 
-//////////////////////////////////////////////////////
-// CLICK: handle a click on DONE BUTTON
+//////////////////////////////////////////////////////***************
+// ON CLICK: handle a click on DONE BUTTON
 popupDone.on('click', function() { //console.log('++ POPUP DONE CLICKED');
-
-  if (popupPic.attr('alt') == '') {
-    thumbNoPic.show();
-    thumbPic.attr({
-      src: '',
-      alt: ''
-    }).hide();
-  } else {
+  var pic = popupPic.attr('src');
+  if (pic) {
+    thumbPic.attr('src', pic).show();
     thumbNoPic.hide();
-    thumbPic.attr({
-      src: popupPic.attr('src'),
-      alt: popupPic.attr('alt')
-    }).show();
+    submitPic.val(pic);
+  } else {
+    thumbPic.attr('src', '').hide();
+    thumbNoPic.show();
   }
-
   popupDialog.hide();
 });
 
-//////////////////////////////////////////////////////
-// CLICK: handle a click on CANCEL BUTTON
+//////////////////////////////////////////////////////***************
+// ON CLICK: handle a click on CANCEL BUTTON
 popupCancel.on('click', function() { //console.log('++ POPUP CANCEL CLICKED');
-  thumbPic.attr({
-    src: currentThumb,
-    alt: currentThumb
-  });
+  thumbPic.attr('src', currentThumb);
   popupDialog.hide();
 });
 
@@ -122,12 +101,14 @@ function toggleMenu() {
 function perNight() {
   rentCycleButton.html('nightly&nbsp;<span class="caret"></span>');
   submitRentCycle.val('week');
-  rentCycleMenu.toggle();
+  // rentCycleMenu.toggle();
+  toggleMenu();
 }
 
 //////////////////////////////////////////////////////
 function perWeek() {
   rentCycleButton.html('weekly&nbsp;<span class="caret"></span>');
   submitRentCycle.val('week');
-  rentCycleMenu.toggle();
+  // rentCycleMenu.toggle();
+  toggleMenu();
 }

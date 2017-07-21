@@ -27,7 +27,8 @@
 body { margin: 0; padding: 0; font-family: Lato, sans-serif; box-sizing: border-box; }
 button, input, textarea { font-family: inherit; }
 *, *:before, *:after { box-sizing: inherit; }
-.base-form { z-index: 0; width: inherit;}
+/** { display: block; }*/
+.base-form { z-index: 0; width: inherit; }
 .popup-form { z-index: 10; }
 .form-row, div[class^="column-"], div[class*=" column-"], .input-group, .form-thumb { z-index: inherit; }
 
@@ -72,18 +73,23 @@ textarea.form-input {
   resize: none;
 }
 /**************************************************/
+/*img {*/
+/*    max-width: 100%;*/
+/*    height: auto;*/
+/*}*/
 .form-thumb:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 .form-thumb {
+  display: none;
   width: 100%;
   height: auto;
   min-height: 80px;
   max-height: 80px;
   margin-top: 9px;
   padding: 3px;
-  font-size: 3em;
+  font-size: 5.2em;
   text-align: center;
   color: #303030;
   background-color: #f8f8f8;
@@ -114,28 +120,31 @@ a.form-button {
 .popup-form {
   position: absolute;
   display: none;
-  margin: 10px auto;
+  margin: 0 auto;
   width: inherit;
-  min-height: 280px;
+  min-height: 336px;
   max-height: 550px;
   border-radius: 10px;
   background-color: rgb(40, 40, 40);
 }
 /**************************************************/
 i.popup-image {
+  margin-bottom: 10px;
   color: white;
-  font-size: 11em;
+  font-size: 18em;
 }
 img.popup-image {
-  margin: 8px auto;
+  margin: 8px auto 44px auto;
   width: 95%;
   color: rgb(40, 40, 40);
   border-radius: 5px;
 }
 /**************************************************/
 .popup-form .form-input {
-  margin-top: 0;
-  margin-bottom: 8px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 8px;
   width: 95%;
 }
 
