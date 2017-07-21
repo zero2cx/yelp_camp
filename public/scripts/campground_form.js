@@ -18,13 +18,13 @@ var popupDone = $('#popup-done');
 var popupCancel = $('#popup-cancel');
 var thumbPic = $('#thumb-pic');
 var thumbNoPic = $('#thumb-no-pic');
-var rentCycleButton = $('#rent-cycle-button');
+var rentCycle = $('#rent-cycle');
 var rentCycleMenu = $('#rent-cycle-menu');
 var submitRentCycle = $('#submit-rent-cycle');
 var submitPic = $('#submit-pic');
 var currentThumb;
 
-// show() will make visible the element using 'display: block;'
+// enable 'display: block;' property toggle-on for each thumb element
 thumbPic.show = function() {
   $(this).css('display', 'block');
 }
@@ -99,16 +99,14 @@ function toggleMenu() {
 
 //////////////////////////////////////////////////////
 function perNight() {
-  rentCycleButton.html('nightly&nbsp;<span class="caret"></span>');
-  submitRentCycle.val('week');
-  // rentCycleMenu.toggle();
+  rentCycle.html('nightly&nbsp;<span class="caret"></span>');
+  submitRentCycle.val('night');
   toggleMenu();
 }
 
 //////////////////////////////////////////////////////
 function perWeek() {
-  rentCycleButton.html('weekly&nbsp;<span class="caret"></span>');
+  rentCycle.html('weekly&nbsp;<span class="caret"></span>');
   submitRentCycle.val('week');
-  // rentCycleMenu.toggle();
   toggleMenu();
 }

@@ -190,6 +190,7 @@ img.popup-image {
 /**************************************************/
 .dropdown-group .dropdown-menu {
   position: absolute;
+  margin-top: -8;
   display: none;
   min-width: 70px;
   background-color: #f0f0f0;
