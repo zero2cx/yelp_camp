@@ -60,7 +60,7 @@ thumbNoPic.on('click', function() { //console.log('++ NO-PIC THUMBNAIL CLICKED')
   popupDialog.show();
 });
 
-//////////////////////////////////////////////////////***************
+//////////////////////////////////////////////////////
 // ON INPUT: attempt to display the IMAGE URL in the POPUP PIC
 popupUrl.on('input', function() { //console.log('++ POPUP URL HAS CHANGED');
   popupPic.on('error', function() {
@@ -70,7 +70,7 @@ popupUrl.on('input', function() { //console.log('++ POPUP URL HAS CHANGED');
   popupNoPic.hide();
 });
 
-//////////////////////////////////////////////////////***************
+//////////////////////////////////////////////////////
 // ON CLICK: handle a click on DONE BUTTON
 popupDone.on('click', function() { //console.log('++ POPUP DONE CLICKED');
   var pic = popupPic.attr('src');
@@ -85,7 +85,7 @@ popupDone.on('click', function() { //console.log('++ POPUP DONE CLICKED');
   popupDialog.hide();
 });
 
-//////////////////////////////////////////////////////***************
+//////////////////////////////////////////////////////
 // ON CLICK: handle a click on CANCEL BUTTON
 popupCancel.on('click', function() { //console.log('++ POPUP CANCEL CLICKED');
   thumbPic.attr('src', currentThumb);

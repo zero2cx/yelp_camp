@@ -1,4 +1,4 @@
-<% /* file: views/campgrounds/new.ejs                */ %>
+<% /* file: views/campgrounds/new.ejs                 */ %>
 <% /* project: YelpCamp                               */ %>
 <% /* developer: David Schenck                        *. %>
 <% /*     <zero2cx @ gmail com>                       */ %>
@@ -53,9 +53,7 @@
         <div class="input-group">
           <input class="form-input" type="number" name="campground[price]" placeholder="price" min="0.01" step="0.01" onInput="javascript:this.value=parseFloat(this.value).toFixed(2)">
           <div class="dropdown-group">
-            <button class="dropdown-button" id="rent-cycle" type="button" name="campground[rent-cycle]" onclick="javascript:toggleMenu()">
-                nightly
-                <span class="caret"></span></button>
+            <button class="dropdown-button" id="rent-cycle" type="button" name="campground[rent-cycle]" onclick="javascript:toggleMenu()">nightly<span class="caret"></span></button>
             <div class="dropdown-menu" id="rent-cycle-menu">
               <a class="menu-item" href="javascript:perNight()">nightly</a>
               <a class="menu-item" href="javascript:perWeek()">weekly</a>

@@ -30,7 +30,7 @@
     </div><!-- form-row -->
 
     <div class="form-row">
-      <input class="form-input" id="popup-url" type="text" placeholder="image url" value="" onclick="javascript:this.select()">
+      <input class="form-input" id="popup-url" type="text" placeholder="paste image url here" value="" onclick="javascript:this.select()">
     </div><!-- form-row -->
 
   </div><!-- popup-form -->
@@ -53,13 +53,7 @@
         <div class="input-group">
           <input class="form-input" type="number" name="campground[price]" placeholder="price" min="0.01" step="0.01" onInput="javascript:this.value=parseFloat(this.value).toFixed(2)" value="<%= campground.price %>">
           <div class="dropdown-group">
-            <button class="dropdown-button" id="rent-cycle" type="button" name="campground[rent-cycle]" onclick="javascript:toggleMenu()">
-<% if (campground.rent_cycle == 'night') { %>
-                nightly
-<% } else { %>
-                weekly
-<% } %>
-                &nbsp;<span class="caret"></span></button>
+            <button class="dropdown-button" id="rent-cycle" type="button" name="campground[rent-cycle]" onclick="javascript:toggleMenu()"><%= campground.rent_cycle %>ly&nbsp;<span class="caret"></span></button>
             <div class="dropdown-menu" id="rent-cycle-menu">
               <a class="menu-item" href="javascript:perNight()">nightly</a>
               <a class="menu-item" href="javascript:perWeek()">weekly</a>
@@ -69,13 +63,8 @@
       </div><!-- column-left -->
 
       <div class="column-right-40">
-<% if (campground.image == '') { %>
         <i class="form-thumb fa fa-picture-o" id="thumb-no-pic"></i>
-        <img class="form-thumb" id="thumb-pic hidden" src="" alt="">
-<% } else { %>
-        <i class="form-thumb fa fa-picture-o hidden" id="thumb-no-pic"></i>
-        <img class="form-thumb" id="thumb-pic" src="<%= campground.image %>" alt="<%= campground.image %>">
-<% } %>
+        <img class="form-thumb" id="thumb-pic" src="<%= campground.image %>" alt="">
       </div><!-- column-right -->
     </div><!-- form-row -->
 
@@ -95,18 +84,12 @@
     <input id="submit-rent-cycle" type="hidden" name="campground[rent_cycle]" value="<%= campground.rent_cycle %>"></input>
     <input id="submit-pic" type="hidden" name="campground[image]" value="<%= campground.image %>"></input>
 
-    </form>
+    </form><!-- <%= form_name %> -->
 
   </div><!-- base-form -->
 </div><!-- form-container-->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/edit_form.js"></script>
-
-<!--< % var serverImage = campground.image %>-->
-<!--< % document.getElementById('thumb-no-pic').toggleClass('hidden') %>-->
-<!--< %= campground.image %>-->
-<!--< %= document.getElementById('thumb-no-pic') %>-->
-
+<script src="/scripts/campground_form.js"></script>
 
 <% include ../partials/page-footer %>
