@@ -12,84 +12,94 @@
 <% include ../partials/content-navbar %>
 <% include ../partials/content-flash %>
 
-<div class="form-container">
-  <div class="popup-form" id="popup-dialog">
+    <div class="container">
+      <div class="form-container">
+        <div class="popup-form" id="popup-dialog"><!-- POPUP-FORM -->
 
-    <div class="form-row">
-      <div class="column-left-50 column-center">
-        <a class="form-button" id="popup-cancel">cancel</a>
-      </div><!-- column-left -->
-      <div class="column-right-50 column-center">
-        <a class="form-button" id="popup-done">done</a>
-      </div><!-- column-right -->
-    </div><!-- form-row -->
+          <div class="form-row"><!-- POPUP-FORM CANCEL AND DONE BUTTONS -->
+            <div class="column-left-50 column-center">
+              <a class="form-button" id="popup-cancel">cancel</a>
+            </div><!-- /column-left -->
+            <div class="column-right-50 column-center">
+              <a class="form-button" id="popup-done">done</a>
+            </div><!-- /column-right -->
+          </div><!-- /form-row -->
 
-    <div class="form-row">
-      <i class="popup-image fa fa-picture-o" id="popup-no-pic"></i>
-      <img class="popup-image" id="popup-pic">
-    </div><!-- form-row -->
+          <div class="form-row"><!-- POPUP-FORM IMAGE -->
+            <i class="popup-image fa fa-picture-o" id="popup-no-pic"></i>
+            <img class="popup-image" id="popup-pic">
+          </div><!-- /form-row -->
 
-    <div class="form-row">
-      <input class="form-input" id="popup-url" type="text" placeholder="paste image url here" value="" onclick="javascript:this.select()">
-    </div><!-- form-row -->
+          <div class="form-row"><!-- POPUP-FORM URL INPUT-->
+            <input class="form-input" id="popup-url" type="text" placeholder="paste image url here" value="" onclick="javascript:this.select()">
+          </div><!-- /form-row -->
 
-  </div><!-- popup-form -->
-</div><!-- popup-form-container -->
+        </div><!-- /popup-form -->
+      </div><!-- /popup-form-container -->
 
-<div class="form-container">
-  <div class="base-form">
+      <div class="form-container">
+        <div class="base-form"><!-- BASE-FORM -->
 
-    <form name="<%= form_name %>" action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
+          <form name="<%= form_name %>" action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
 
-    <div class="form-row">
-      <p class="form-title"><%= form_title %></p>
-    </div><!-- form-row -->
+          <div class="form-row"><!-- BASE-FORM TITLE LABEL -->
+            <p class="form-title"><%= form_title %></p>
+          </div><!-- /form-row -->
 
-    <div class="form-row">
-      <div class="column-left-60">
+          <div class="form-row">
+            <div class="column-left-60">
 
-        <input class="form-input" type="text" name="campground[name]" placeholder="campground name" value="<%= campground.name %>">
+              <span><!-- BASE-FORM NAME INPUT -->
+                <input class="form-input" type="text" name="campground[name]" placeholder="campground name" value="<%= campground.name %>">
+              </span><!-- /span -->
 
-        <div class="input-group">
-          <input class="form-input" type="number" name="campground[price]" placeholder="price" min="0.01" step="0.01" onInput="javascript:this.value=parseFloat(this.value).toFixed(2)" value="<%= campground.price %>">
-          <div class="dropdown-group">
-            <button class="dropdown-button" id="rent-cycle" type="button" name="campground[rent-cycle]" onclick="javascript:toggleMenu()"><%= campground.rent_cycle %>ly&nbsp;<span class="caret"></span></button>
-            <div class="dropdown-menu" id="rent-cycle-menu">
-              <a class="menu-item" href="javascript:perNight()">nightly</a>
-              <a class="menu-item" href="javascript:perWeek()">weekly</a>
-            </div><!-- dropdown-menu -->
-          </div><!-- dropdown-group -->
-        </div><!-- input-group -->
-      </div><!-- column-left -->
+              <div class="input-group"><!-- BASE-FORM PRICE INPUT AND DROPDOWN MENU -->
+                <input class="form-input" type="number" name="campground[price]" placeholder="price" min="0.01" step="0.01" onInput="javascript:this.value=parseFloat(this.value).toFixed(2)" value="<%= campground.price %>">
+                <div class="dropdown-group">
+                  <button class="dropdown-button" id="rent-cycle" type="button" name="campground[rent-cycle]" onclick="javascript:toggleMenu()"><%= campground.rent_cycle %>ly&nbsp;<span class="caret"></span></button>
+                  <div class="dropdown-menu" id="rent-cycle-menu">
+                    <a class="menu-item" href="javascript:perNight()">nightly</a>
+                    <a class="menu-item" href="javascript:perWeek()">weekly</a>
+                  </div><!-- /dropdown-menu -->
+                </div><!-- /dropdown-group -->
+              </div><!-- /input-group -->
+            </div><!-- /column-left -->
 
-      <div class="column-right-40">
-        <i class="form-thumb fa fa-picture-o" id="thumb-no-pic"></i>
-        <img class="form-thumb" id="thumb-pic" src="<%= campground.image %>" alt="">
-      </div><!-- column-right -->
-    </div><!-- form-row -->
+            <div class="column-right-40"><!-- BASE-FORM IMAGE THUMBNAIL -->
+              <i class="form-thumb fa fa-picture-o" id="thumb-no-pic"></i>
+              <img class="form-thumb" id="thumb-pic" src="<%= campground.image %>" alt="">
+            </div><!-- /column-right -->
+          </div><!-- /form-row -->
 
-    <div class="form-row">
-      <textarea class="form-input" placeholder="description" name="campground[description]"><%= campground.description %></textarea>
-    </div><!-- form-row -->
+          <div class="form-row">
+              <input class="form-control" type="text" name="location" id="campground[location]" placeholder="location" value="<%= campground.location %>">
+          </div><!-- /form-row -->
 
-    <div class="form-row">
-      <div class="column-left-50 column-center">
-        <a class="form-button" id="form-cancel" href="/campgrounds/<%= campground._id %>">cancel</a>
-      </div><!-- column-left -->
-      <div class="column-right-50 column-center">
-        <a class="form-button" id="form-done" href="javascript:document.<%= form_name %>.submit()">done</a>
-      </div><!-- column-right -->
-    </div><!-- form-row -->
+          <div class="form-row"><!-- BASE-FORM DESCRIPTION INPUT -->
+            <textarea class="form-input" placeholder="description" name="campground[description]"><%= campground.description %></textarea>
+          </div><!-- /form-row -->
 
-    <input id="submit-rent-cycle" type="hidden" name="campground[rent_cycle]" value="<%= campground.rent_cycle %>"></input>
-    <input id="submit-pic" type="hidden" name="campground[image]" value="<%= campground.image %>"></input>
+          <div class="form-row"><!-- BASE-FORM CANCEL AND DONE BUTTONS -->
+            <div class="column-left-50 column-center">
+              <a class="form-button" id="form-cancel" href="/campgrounds/<%= campground._id %>">cancel</a>
+            </div><!-- /column-left -->
+            <div class="column-right-50 column-center">
+              <a class="form-button" id="form-done" href="javascript:document.<%= form_name %>.submit()">done</a>
+            </div><!-- /column-right -->
+          </div><!-- /form-row -->
 
-    </form><!-- <%= form_name %> -->
+          <span><!-- BASE-FORM HIDDEN INPUTS -->
+            <input id="submit-rent-cycle" type="hidden" name="campground[rent_cycle]" value="<%= campground.rent_cycle %>"></input>
+            <input id="submit-pic" type="hidden" name="campground[image]" value="<%= campground.image %>"></input>
+          </span><!-- /span -->
 
-  </div><!-- base-form -->
-</div><!-- form-container-->
+          </form><!-- <%= form_name %> -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/scripts/campground_form.js"></script>
+        </div><!-- /base-form -->
+      </div><!-- /form-container-->
+    </div><!-- /container -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/scripts/campground_form.js"></script>
 
 <% include ../partials/page-footer %>

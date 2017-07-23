@@ -24,3 +24,7 @@
   color: #f0f080;
   background-color: #004020;
 }
+#map {
+  height: 400px;
+  width: 100%;
+}
