@@ -8,11 +8,14 @@
 <% /*     <plus google com/u/0/117096754871952321821> */ %>
 <% /* license: ISC                                    */ %>
 
-    <div class="container">
 <% if(error && error.length > 0) { %>
-      <div class="alert alert-danger"><%= error %></div>
+      <div class="alert alert-danger">
+        <%= error %>
+      </div><!-- /alert /alert-danger -->
 <% } %>
+
 <% if(success && success.length > 0) { %>
-      <div class="alert alert-success"><%= success %></div>
+      <div class="alert alert-success">
+        <%= success %>
+      </div><!-- /alert /alert-success -->
 <% } %>
-    </div><!-- container -->

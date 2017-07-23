@@ -8,16 +8,16 @@
 /*     <plus google com/u/0/117096754871952321821> */
 /* license: ISC                                    */
 
-var express = require("express");
+var express = require('express');
 var router = express.Router();
-var bootstrap = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
-var modernizr = 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js';
+var bootstrapCss = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
+var modernizrJs = 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js';
 
 // route: SERVER_ROOT
-router.get("/", function(req, res) {
-  res.render("landing", {
-    styles: [bootstrap, '/styles/landing.css'],
-    scripts: [modernizr]
+router.get('/', function(req, res) {
+  res.render('landing', {
+    styles: [bootstrapCss, '/styles/landing.css'],
+    headerScripts: [modernizrJs]
   });
 });
 
