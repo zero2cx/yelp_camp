@@ -12,12 +12,43 @@
 <% include ../partials/content-navbar %>
 <% include ../partials/content-flash %>
 
-<h1>login form</h1>
+    <div class="container">
+      <div class="row">
+        <h1 style="text-align: center">login form</h1>
+        <div style="width: 30%; margin: 25px auto;">
 
-<form action="/user/login" method="POST">
-  <input type="text" name="username" placeholder="username">
-  <input type="password" name="password" placeholder="password">
-  <button>Submit</button>
-</form>
+          <form name="login_form" action="/user/login" method="POST">
+
+            <div class="form-group">
+              <input class="form-control" type="text" name="username" placeholder="username">
+            </div><!-- /form-group -->
+
+            <div class="form-group">
+              <input class="form-control" type="password" name="password" placeholder="password">
+            </div><!-- /form-group -->
+
+            <div class="form-group">
+              <button class="btn btn-lg btn-primary btn-block">submit</button>
+            </div><!-- /form-group -->
+
+          </form><!-- /login_form -->
+
+          <a href="/campgrounds">cancel</a>
+
+        </div><!-- /style="" -->
+      </div><!-- /row -->
+    </div><!-- /container -->
+
+
+      <!--<h1>login form</h1>-->
+
+      <!--<form name="login_user" action="/user/login" method="POST">-->
+
+      <!--  <input type="text" name="username" placeholder="username">-->
+      <!--  <input type="password" name="password" placeholder="password">-->
+      <!--  <button>Submit</button>-->
+
+      <!--</form>-->
+<!-- /login_user -->
 
 <% include ../partials/page-footer %>

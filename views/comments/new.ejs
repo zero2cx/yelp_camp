@@ -14,19 +14,28 @@
 
     <div class="container">
       <div class="row">
+
         <h1 style="text-align: center;">Create a new comment for <%= campground.name %></h1>
+
         <div style="width: 30%; margin: 20px auto;">
-          <form action="/campgrounds/<%= campground._id %>/comments" method="POST">
+
+          <form name="new_comment" action="/campgrounds/<%= campground._id %>/comments" method="POST">
+
             <div class="form-group">
               <input class="form-control" type="text" name="comment[text]" placeholder="comment text">
-            </div>
+            </div><!-- /form-group -->
+
             <div class="form-group">
               <button class="btn btn-lg btn-primary btn-default btn-block">submit</button>
-            </div>
-          </form>
+            </div><!-- /form-group -->
+
+          </form><!-- /new_comment -->
+
           <a href="/campgrounds">cancel</a>
-        </div>
-      </div>
-    </div>
+
+        </div><!-- /style="" -->
+
+      </div><!-- /row -->
+    </div><!-- /container -->
 
 <% include ../partials/page-footer %>

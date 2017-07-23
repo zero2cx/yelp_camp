@@ -11,12 +11,13 @@
 <! DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>YelpCamp</title>
 <% for (var i = 0; i < styles.length; i++) { %>
     <link rel="stylesheet" href="<%= styles[i] %>">
-<% } %>
-<% for (var i = 0; i < scripts.length; i++) { %>
-    <script src="<%= scripts[i] %>"></script>
-<% } %>
+<% } %><!-- /for() -->
+<% for (var i = 0; i < headerScripts.length; i++) { %>
+    <script src="<%= headerScripts[i] %>"></script>
+<% } %><!-- /for() -->
   </head>
   <body>
